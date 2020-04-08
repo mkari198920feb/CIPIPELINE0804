@@ -1,13 +1,10 @@
-#!/bin/bash
-if [ $# -gt 0 ]
-then
-if [ -f $1 ]
-then
-  echo "Contents of the file..."
-  cat $1
-else
-  echo "File Not Found.."$1
-fi
-else
-  echo "Not enough command line arguments..."
-fi
+# FIRST DOCKER FILE IMPLEMENTATION WITH SCRIPT
+
+FROM ubuntu:18.04
+LABEL MAINTAINER dj@webdevops.com
+RUN mkdir /code
+COPY sample.sh /code/sample.sh
+RUN chmod +x /code/sample.sh
+RUN echo "Image is Built..."
+ENTRYPOINT ["sh","/code/sample.sh"]
+CMD ["/etc/hosts"]
